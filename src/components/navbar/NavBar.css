@@ -1,0 +1,62 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  min-width: 100vw;
+  min-height: 7vh;
+  justify-content: right;
+  padding-right: 1.25rem;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.navbar h3 {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: inherit;
+  line-height: var(--line-height-tight);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  background: transparent;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.navbar__link {
+  text-decoration: none;
+}
+
+.navbar__link:nth-child(1):hover h3,
+.navbar__link:nth-child(1):focus-visible h3 {
+  color: var(--color-accent-blue);
+  background: var(--color-bg-surface);
+  border-color: var(--color-border-accent-blue);
+  box-shadow: var(--glow-blue);
+}
+
+.navbar__link:nth-child(2):hover h3,
+.navbar__link:nth-child(2):focus-visible h3 {
+  color: var(--color-accent-purple);
+  background: var(--color-bg-surface);
+  border-color: var(--color-border-accent-purple);
+  box-shadow: var(--glow-purple);
+}
+
+.navbar__link:nth-child(3):hover h3,
+.navbar__link:nth-child(3):focus-visible h3 {
+  color: var(--color-accent-red);
+  background: var(--color-bg-surface);
+  border-color: var(--color-border-accent-red);
+  box-shadow: var(--glow-red);
+}
+
+.navbar__link:focus-visible {
+  outline: none;
+}
