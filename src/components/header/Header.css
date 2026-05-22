@@ -55,7 +55,7 @@
 /* top slice */
 .glitch span:first-child {
     clip-path: polygon(0 0, 100% 0, 100% 20%, 0 40%);
-    transform: translate(-0.05em, -0.025em);
+    transform: translate(-0.1em, -0.045em);
     opacity: 0.6;
     animation: glitch 550ms infinite;
 }
@@ -78,7 +78,7 @@
     15% {
         text-shadow:
             -0.05em -0.025em 0 var(--color-accent-blue),
-            0.025em 0.05em 0 var(--color-accent-purple),
+            0.025em 0.05em 0 green,
             -0.05em -0.05em 0 var(--color-accent-red);
     }
     49% {
@@ -90,7 +90,7 @@
     50% {
         text-shadow:
             0.025em 0.05em 0 var(--color-accent-blue),
-            0.05em 0 0 var(--color-accent-purple),
+            0.05em 0 0 green,
             0 -0.05em 0 var(--color-accent-red);
     }
     99% {
