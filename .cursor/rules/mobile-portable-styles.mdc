@@ -1,0 +1,64 @@
+---
+description: Enforce mobile-friendly, portable CSS across the portfolio
+globs: "**/*.{css,jsx,tsx}"
+alwaysApply: true
+---
+
+# Mobile-portable styles
+
+All CSS and styling decisions must work on small screens and touch devices, not only desktop.
+
+## Layout & sizing
+
+- Prefer `rem` / `em` over `px` for typography, spacing, and min-heights so layouts scale with user font settings.
+- Do **not** use percentage heights (`min-height: 10%`) unless every ancestor has an explicit height.
+- Avoid `100vw` for full-width bars; use `width: 100%` or `max-width: 100%` to prevent horizontal overflow from scrollbars.
+- Use `min-height` in `rem` (e.g. `3rem`–`3.5rem`) for nav/header bars—not `vh` or `%`—unless the design intentionally depends on viewport height.
+- Use `flex-wrap`, `gap`, and `minmax()` in grids so content reflows on narrow screens.
+
+## Touch & readability
+
+- Interactive targets (links, buttons, nav items) should be at least **44×44px** effective tap area (`padding` + `min-height` count).
+- Keep body text readable: avoid font sizes below `0.875rem` for primary content on mobile.
+
+## Responsive patterns
+
+- Add `@media (max-width: 40rem)` (or `48rem`) overrides when desktop layouts would crowd or overflow.
+- Reduce `gap`, `padding`, and heading `font-size` on small breakpoints rather than only shrinking width.
+- Stack horizontal flex rows vertically on mobile when needed (`flex-direction: column`).
+
+## Safe areas
+
+- Use `env(safe-area-inset-*)` with `max()` for padding on full-bleed headers/nav on notched phones.
+
+## Project conventions
+
+- Reuse design tokens from `src/constants.css` (`--color-*`, `--font-size-*`, glows) instead of hardcoded one-off values.
+- Colocate styles in component `.css` files; keep selectors scoped to the component.
+
+## Examples
+
+```css
+/* ❌ BAD — breaks on mobile */
+.navbar {
+  min-width: 100vw;
+  min-height: 10%;
+}
+
+/* ✅ GOOD */
+.navbar {
+  width: 100%;
+  min-height: 3.5rem;
+  padding-block: 0.75rem;
+  padding-inline: max(1rem, env(safe-area-inset-right));
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 40rem) {
+  .navbar {
+    min-height: 3rem;
+    justify-content: center;
+  }
+}
+```
